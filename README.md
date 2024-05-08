@@ -73,8 +73,7 @@
 
 
 ## Topologi
-
-
+![Screenshot 2024-05-08 201857](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/20a08202-6916-4533-9515-9cc0e77b9883)
 
 ## Config 
 
@@ -220,7 +219,7 @@ Untuk membantu pertempuran di Erangel, kamu ditugaskan untuk membuat jaringan ko
 ```
 ping google.com -c 5
 ```
-![image]()
+![Screenshot 2024-05-08 204218](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/eef4c995-68a5-432a-94fa-d1f7daa7f514)
 
 ## Soal 2
 Karena para pasukan membutuhkan koordinasi untuk mengambil airdrop, maka buatlah sebuah domain yang mengarah ke Stalber dengan alamat airdrop.xxxx.com dengan alias www.airdrop.xxxx.com dimana xxxx merupakan kode kelompok. Contoh : airdrop.it01.com
