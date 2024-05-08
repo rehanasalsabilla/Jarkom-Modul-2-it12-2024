@@ -18,68 +18,360 @@
   - [Result](#result)
 - [Soal 2](#Soal-2)
   - [Script](#script-1)
-  - [Result](#result-1)
 - [Soal 3](#Soal-3)
   - [Script](#script-2)
-  - [Result](#result-2)
 - [Soal 4](#Soal-4)
   - [Script](#script-3)
-  - [Result](#result-3)
 - [Soal 5](#Soal-5)
-  - [Script](#script-4)
-  - [Result](#result-4)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 6](#Soal-6)
   - [Script](#script)
   - [Result](#result)
 - [Soal 7](#Soal-7)
-  - [Script](#script-6)
-  - [Result](#result-6)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 8](#Soal-8)
-  - [Script](#script-7)
-  - [Result](#result-7)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 9](#Soal-9)
-  - [Script](#script-8)
-  - [Result](#result-8)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 10](#Soal-10)
-  - [Script](#script-9)
-  - [Result](#result-9)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 11](#Soal-11)
-  - [Script](#script-10)
-  - [Result](#result-10)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 12](#Soal-12)
-  - [Script](#script-11)
-  - [Result](#result-11)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 13](#Soal-13)
-  - [Script](#script-12)
-  - [Result](#result-12)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 14](#Soal-14)
-  - [Script](#script-13)
-  - [Result](#result-13)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 15](#Soal-15)
-  - [Script](#script-14)
-  - [Result](#result-14)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 16](#Soal-16)
-  - [Script](#script-15)
-  - [Result](#result-15)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 17](#Soal-17)
-  - [Script](#script-16)
-  - [Result](#result-16)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 18](#Soal-18)
-  - [Script](#script-17)
-  - [Result](#result-17)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 19](#Soal-19)
-  - [Script](#script-18)
-  - [Result](#result-18)
+  - [Script](#script)
+  - [Result](#result)
 - [Soal 20](#Soal-20)
-  - [Script](#script-19)
-  - [Result](#result-19)
+  - [Script](#script)
+  - [Result](#result)
 
+
+## Topologi
+![image]()
+
+## Config  --belom diatur
+- **Pandudewanata**
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+
+  auto eth1
+  iface eth1 inet static
+          address 192.173.1.1
+          netmask 255.255.255.0
+
+  auto eth2
+  iface eth2 inet static
+          address 192.173.2.1
+          netmask 255.255.255.0
+
+  auto eth3
+  iface eth3 inet static
+          address 192.173.3.1
+          netmask 255.255.255.0
+  ```
+- **Yudhistira**
+  ```
+  auto eth0
+  iface eth0 inet static
+          address 192.173.1.2
+          netmask 255.255.255.0
+          gateway 192.173.1.1
+  ```
+- **Nakula**
+  ```
+  auto eth0
+  iface eth0 inet static
+          address 192.173.1.3
+          netmask 255.255.255.0
+          gateway 192.173.1.1
+  ```
+- **Werkudara**
+  ```
+  auto eth0
+  iface eth0 inet static
+          address 192.173.2.2
+          netmask 255.255.255.0
+          gateway 192.173.2.1
+  ```
+- **Sadewa**
+  ```
+  auto eth0
+  iface eth0 inet static
+          address 192.173.2.3
+          netmask 255.255.255.0
+          gateway 192.173.2.1
+  ```
+- **Prabukusuma**
+  ```
+  auto eth0
+  iface eth0 inet static
+          address 192.173.3.2
+          netmask 255.255.255.0
+          gateway 192.173.3.1
+  ```
+- **Abimanyu**
+  ```
+  auto eth0
+  iface eth0 inet static
+          address 192.173.3.3
+          netmask 255.255.255.0
+          gateway 192.173.3.1
+  ```
+- **Wisanggeni**
+  ```
+  auto eth0
+  iface eth0 inet static
+          address 192.173.3.4
+          netmask 255.255.255.0
+          gateway 192.173.3.1
+  ```
+- **Arjuna**
+  ```
+  auto eth0
+  iface eth0 inet static
+          address 192.173.3.5
+          netmask 255.255.255.0
+          gateway 192.173.3.1
+  ```
+- **Notes of Config**
+  ```
+  Pandudewanata	: 192.173.1.1 (Switch 1)
+  Yudhistira	: 192.173.1.2
+  Nakula	        : 192.173.1.3
+  Pandudewanata	: 192.173.2.1 (Switch 2)
+  Werkudara	: 192.173.2.2
+  Sadewa	        : 192.173.2.3
+  Pandudewanata	: 192.173.3.1 (Switch 3)
+  Prabukusuma	: 192.173.3.2
+  Abimanyu	: 192.173.3.3
+  Wisanggeni	: 192.173.3.4
+  Arjuna	        : 192.173.3.5
+  ```
+
+### Sebelum memulai --belom
+setiap node, kita inisiasi pada `.bashrc` menggunakan `nano`
+
+- **Pandudewanata**
+  ```
+  iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.173.0.0/16
+  echo 'nameserver 192.168.122.1' > /etc/resolv.conf
+  ```
+- **Master & Slave**
+  ```
+  echo 'nameserver 192.168.122.1' > /etc/resolv.conf
+  apt-get update
+  apt-get install bind9 -y      
+  ```
+- **Client**
+  ```
+  echo -e '
+  nameserver 192.173.1.2 # IP Yudhistira
+  nameserver 192.173.2.2 # IP Werkudara
+  nameserver 192.168.122.1
+  ' > /etc/resolv.conf
+  apt-get update
+  apt-get install dnsutils -y
+  apt-get install lynx -y
+  ```
+
+## Soal 1 
+Untuk membantu pertempuran di Erangel, kamu ditugaskan untuk membuat jaringan komputer yang akan digunakan sebagai alat komunikasi. Sesuaikan rancangan Topologi dengan rancangan dan pembagian yang berada di link yang telah disediakan, dengan ketentuan nodenya sebagai berikut :
+- DNS Master akan diberi nama Pochinki, sesuai dengan kota tempat dibuatnya server tersebut
+- Karena ada kemungkinan musuh akan mencoba menyerang Server Utama, maka buatlah DNS Slave Georgopol yang mengarah ke Pochinki
+- Markas pusat juga meminta dibuatkan tiga Web Server yaitu Severny, Stalber, dan Lipovka. Sedangkan Mylta akan bertindak sebagai Load Balancer untuk server-server tersebut
+
+### Result 
+**Ruins dan Apartments**
+```
+ping google.com -c 5
+```
+![image]()
+
+## Soal 2
+Karena para pasukan membutuhkan koordinasi untuk mengambil airdrop, maka buatlah sebuah domain yang mengarah ke Stalber dengan alamat airdrop.xxxx.com dengan alias www.airdrop.xxxx.com dimana xxxx merupakan kode kelompok. Contoh : airdrop.it01.com
+
+### Script
+Melakukan set up pada node DNS Master ( Pochinki )
+**Pochinki**
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+    apt-get update
+    apt-get install bind9 -y
+    
+echo 'zone "airdrop.it12.com" {
+	type master;
+	file "/etc/bind/jarkom/airdrop.it12.com";
+    allow-transfer { 192.239.1.3; }; //IP Stalber
+};' > /etc/bind/named.conf.local
+
+cp /etc/bind/db.local /etc/bind/jarkom/airdrop.it12.com
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     airdrop.it12.com. root.airdrop.it12.com. (
+                        2024050301      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      airdrop.it12.com.
+@       IN      A       192.239.1.3  ; 
+www     IN      CNAME   airdrop.it12.com.' > /etc/bind/jarkom/airdrop.it12.com
+
+
+service bind9 restart
+```
+
+**Ruins**
+Lakukan set up nameserver yang mengarah ke `IP Node Pochinki`
+```
+ping airdrop.it12.com -c 5
+```
+**Apartments**
+Lakukan set up nameserver yang mengarah ke `IP Node Pochinki`
+```
+ping www.airdrop.it12.com -c 5
+```
+
+
+## Soal 3
+Para pasukan juga perlu mengetahui mana titik yang sedang di bombardir artileri, sehingga dibutuhkan domain lain yaitu redzone.xxxx.com dengan alias www.redzone.xxxx.com yang mengarah ke Severny
+
+### Script
+Melakukan set up pada node DNS Master ( Pochinki )
+**Pochinki**
+```
+echo 'zone "redzone.it12.com" {
+	type master;
+	file "/etc/bind/jarkom/redzone.it12.com";
+    allow-transfer { 192.239.1.4; }; //IP Severny
+};' > /etc/bind/named.conf.local
+
+cp /etc/bind/db.local /etc/bind/jarkom/redzone.it12.com
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     redzone.it12.com. root.redzone.it12.com. (
+                        2024050301      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      redzone.it12.com.
+@       IN      A       192.239.1.4  ; 
+www     IN      CNAME   redzone.it12.com.
+' > /etc/bind/jarkom/redzone.it12.com
+
+
+service bind9 restart
+```
+**Ruins**
+Lakukan set up nameserver yang mengarah ke `IP Node Pochinki`
+```
+ping redzone.it12.com -c 5
+```
+**Apartments**
+Lakukan set up nameserver yang mengarah ke `IP Node Pochinki`
+```
+ping www.redzone.it12.com -c 5
+```
+
+
+## Soal 4
+Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi persenjataan dan suplai tersebut mengarah ke Mylta dan domain yang ingin digunakan adalah loot.xxxx.com dengan alias www.loot.xxxx.com
+
+### Script
+Melakukan set up pada node DNS Master ( Pochinki )
+**Pochinki**
+```
+echo 'zone "loot.it12.com" {
+	type master;
+	file "/etc/bind/jarkom/loot.it12.com";
+    allow-transfer { 192.239.2.4; }; //IP Mylta
+};' > /etc/bind/named.conf.local
+
+cp /etc/bind/db.local /etc/bind/jarkom/loot.it12.com
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     loot.it12.com. root.loot.it12.com. (
+                        2024050301      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      loot.it12.com.
+@       IN      A       192.239.2.4  ; 
+www     IN      CNAME   loot.it12.com.
+' > /etc/bind/jarkom/loot.it12.com
+
+
+service bind9 restart
+```
+
+**Ruins**
+Lakukan set up nameserver yang mengarah ke `IP Node Pochinki`
+```
+ping loot.it12.com -c 5
+```
+**Apartments**
+Lakukan set up nameserver yang mengarah ke `IP Node Pochinki`
+```
+ping www.loot.it12.com -c 5
+```
+
+
+## Soal 5
+Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Erangel
+
+### Result
+![image]()
 
 ## Soal 6
 Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain redzone.xxxx.com melalui alamat IP Severny (Notes : menggunakan pointer record)
 
 ### Script
 - Run kode dibawah pada Pochinki
+#### Pochinki
 ```
 echo nameserver 192.168.122.1 > /etc/resolv.conf
     apt-get update
