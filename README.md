@@ -78,7 +78,7 @@
 ## Soal 6
 Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain redzone.xxxx.com melalui alamat IP Severny (Notes : menggunakan pointer record)
 
-### Penyelesaian
+### Script
 - Run kode dibawah pada Pochinki
 ```
 echo nameserver 192.168.122.1 > /etc/resolv.conf
@@ -129,6 +129,8 @@ host -t PTR 192.239.1.4
 
 ## Soal 7
 Akhir-akhir ini seringkali terjadi serangan siber ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Georgopol untuk semua domain yang sudah dibuat sebelumnya
+
+### Script
 
 ### Pochinki
 - Jalankan `nano /etc/bind/named.conf.local`
@@ -222,6 +224,8 @@ Dapat dilihat bahwa website masih error ketika di ping untuk case saya.
 ## Soal 8
 Kamu juga diperintahkan untuk membuat subdomain khusus melacak airdrop berisi peralatan medis dengan subdomain medkit.airdrop.xxxx.com yang mengarah ke Lipovka
 
+### Script
+
 - Pada Pochinki, run code bash dibawah
 ```
 #!/bin/bash
@@ -258,6 +262,8 @@ config
 
 ## Soal 9 
 Terkadang red zone yang pada umumnya di bombardir artileri akan dijatuhi bom oleh pesawat tempur. Untuk melindungi warga, kita diperlukan untuk membuat sistem peringatan air raid dan memasukkannya ke subdomain siren.redzone.xxxx.com dalam folder siren dan pastikan dapat diakses secara mudah dengan menambahkan alias www.siren.redzone.xxxx.com dan mendelegasikan subdomain tersebut ke Georgopol dengan alamat IP menuju radar di Severny
+
+## Script
 
 ### Pochinki
 Jalankan `cp /etc/bind/jarkom/redzone.it12.com /etc/bind/jarkom/siren.redzone.it12.com`
