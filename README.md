@@ -784,6 +784,10 @@ service apache2 restart
 **Testing Load Balancer**
 - menggunakan lynx dan setiap ip load balancer di restart akan menampilkan isi index.php dari worker secara bergantian
 
+### Result 
+![Screenshot 2024-05-08 212601](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/78411c0f-bf86-4310-bc15-e28f4eeff661)
+![Screenshot 2024-05-08 205812](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/33b55e16-fbc3-444e-a6d5-b5fd78481249)
+
 ## Soal 14
 Mereka juga belum merasa puas jadi pusat meminta agar web servernya dan load balancer nya diubah menjadi nginx
 
