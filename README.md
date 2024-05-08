@@ -410,7 +410,7 @@ apt-get update
 apt-get install dnsutils
 ```
 - Lalu kembali ke nameserver Pochinki dengan `echo nameserver 192.239.3.2 > /etc/resolv.conf`
-- Jalankan command
+- Jalankan command pada client
 ```
 host -t PTR 192.239.1.4
 ```
@@ -639,6 +639,29 @@ www     IN      CNAME   siren.redzone.it12.com.
 
 Error ketika ping padahal sudah mengikuti step by step nya.
 
+## Soal 10
+Markas juga meminta catatan kapan saja pesawat tempur tersebut menjatuhkan bom, maka buatlah subdomain baru di subdomain siren yaitu log.siren.redzone.xxxx.com serta aliasnya www.log.siren.redzone.xxxx.com yang juga mengarah ke Severny
+
+- Jalankan command `nano /etc/bind/jarkom/siren.redzone.it12.com` lalu edit isinya seperti dibawah
+```
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     siren.redzone.it12.com. root.siren.redzone.it12.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      siren.redzone.it12.com.
+@       IN      A       192.239.1.4
+www     IN      CNAME   siren.redzone.it12.com.
+log     IN      A       192.239.1.4
+www.log IN      CNAME   siren.redzone.it12.com.
+@       IN      AAAA    ::1
+```
 
 
 
