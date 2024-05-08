@@ -691,13 +691,18 @@ forwarders {
 allow-query{any;};
 ```
 ### Script
-
+![Screenshot 2024-05-08 203419](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/6bba717d-4cc7-4d4b-b150-08bdc930b831)
 - Restart ``service bind9 restart``
 - Ubahlah nameserver pada node lain ke ``IP Pochinki`` lalu ping google.com
-![image]()
-
 ### Result
-![image]()
+![Screenshot 2024-05-08 204218](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/b7495bb3-f998-49be-91f3-6fdf715b63e6)
+![Screenshot 2024-05-08 204243](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/0c9e2bff-1f2a-4a38-bbea-133ae8a33694)
+![Screenshot 2024-05-08 204402](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12
+![Screenshot 2024-05-08 204301](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/04eef4ec-33e7-4119-9957-2ccfd67a100e)
+-2024/assets/136863633/bc9a5e76-d9ab-4d33-9524-fd73ff504912)
+![Screenshot 2024-05-08 204338](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/e48bcd02-d411-4be9-b013-4685d82e179e)
+![Screenshot 2024-05-08 204319](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/d285aaa2-134a-423b-afcd-7f7493627aec)
+![Screenshot 2024-05-08 204421](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/3a211279-f471-486e-9445-2505d53ffd8c)
 
 ## Soal 12
 Karena pusat ingin sebuah website yang ingin digunakan untuk memantau kondisi markas lainnya maka deploy lah webiste ini (cek resource yg lb) pada severny menggunakan apache
@@ -733,7 +738,7 @@ service apache2 restart
 #### Melakukan konfigurasi 
 ```lynx http://10.78.3.2/index.php```
 ### Result
-![image]()
+![Screenshot 2024-05-08 205754](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/5490757a-0bf0-4839-b4cb-5d6558020413)
 
 ## Soal 13
 Tapi pusat merasa tidak puas dengan performanya karena traffic yag tinggi maka pusat meminta kita memasang load balancer pada web nya, dengan Severny, Stalber, Lipovka sebagai worker dan Mylta sebagai Load Balancer menggunakan apache sebagai web server nya dan load balancernya
