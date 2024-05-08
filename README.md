@@ -789,6 +789,33 @@ Markas pusat meminta laporan hasil benchmark dengan menggunakan apache benchmark
 - Grafik request per second untuk masing masing algoritma. 
 - Analisis
 
+### Script
+
+## Soal 16
+Karena dirasa kurang aman karena masih memakai IP, markas ingin akses ke mylta memakai mylta.xxx.com dengan alias www.mylta.xxx.com (sesuai web server terbaik hasil analisis kalian)
+
+### Script
+
+## Soal 17
+Agar aman, buatlah konfigurasi agar mylta.xxx.com hanya dapat diakses melalui port 14000 dan 14400.
+
+### Script
+
+## Soal 18
+Apa bila ada yang mencoba mengakses IP mylta akan secara otomatis dialihkan ke www.mylta.xxx.com
+
+### Script
+
+## Soal 19 
+Karena probset sudah kehabisan ide masuk ke salah satu worker buatkan akses direktori listing yang mengarah ke resource worker2
+
+### Script
+
+## Soal 20
+Worker tersebut harus dapat di akses dengan tamat.xxx.com dengan alias www.tamat.xxx.com
+
+### Script
+
 
 
 
