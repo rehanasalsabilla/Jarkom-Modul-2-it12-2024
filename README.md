@@ -75,110 +75,117 @@
 ## Topologi
 ![image]()
 
-## Config  --belom diatur
-- **Pandudewanata**
-  ```
-  auto eth0
-  iface eth0 inet dhcp
+## Config 
 
-  auto eth1
-  iface eth1 inet static
-          address 192.173.1.1
-          netmask 255.255.255.0
+- Erangel :
+```
+auto eth0
+iface eth0 inet dhcp
 
-  auto eth2
-  iface eth2 inet static
-          address 192.173.2.1
-          netmask 255.255.255.0
+auto eth1
+iface eth1 inet static
+	address 192.239.1.1
+	netmask 255.255.255.0
 
-  auto eth3
-  iface eth3 inet static
-          address 192.173.3.1
-          netmask 255.255.255.0
-  ```
-- **Yudhistira**
-  ```
-  auto eth0
-  iface eth0 inet static
-          address 192.173.1.2
-          netmask 255.255.255.0
-          gateway 192.173.1.1
-  ```
-- **Nakula**
-  ```
-  auto eth0
-  iface eth0 inet static
-          address 192.173.1.3
-          netmask 255.255.255.0
-          gateway 192.173.1.1
-  ```
-- **Werkudara**
-  ```
-  auto eth0
-  iface eth0 inet static
-          address 192.173.2.2
-          netmask 255.255.255.0
-          gateway 192.173.2.1
-  ```
-- **Sadewa**
-  ```
-  auto eth0
-  iface eth0 inet static
-          address 192.173.2.3
-          netmask 255.255.255.0
-          gateway 192.173.2.1
-  ```
-- **Prabukusuma**
-  ```
-  auto eth0
-  iface eth0 inet static
-          address 192.173.3.2
-          netmask 255.255.255.0
-          gateway 192.173.3.1
-  ```
-- **Abimanyu**
-  ```
-  auto eth0
-  iface eth0 inet static
-          address 192.173.3.3
-          netmask 255.255.255.0
-          gateway 192.173.3.1
-  ```
-- **Wisanggeni**
-  ```
-  auto eth0
-  iface eth0 inet static
-          address 192.173.3.4
-          netmask 255.255.255.0
-          gateway 192.173.3.1
-  ```
-- **Arjuna**
-  ```
-  auto eth0
-  iface eth0 inet static
-          address 192.173.3.5
-          netmask 255.255.255.0
-          gateway 192.173.3.1
-  ```
+auto eth2
+iface eth2 inet static
+	address 192.239.2.1
+	netmask 255.255.255.0
+
+auto eth3
+iface eth3 inet static
+	address 192.239.3.1
+	netmask 255.255.255.0
+```
+
+- Lipovka :
+```
+auto eth0
+iface eth0 inet static
+	address 192.239.1.2
+	netmask 255.255.255.0
+	gateway 192.239.1.1
+```
+
+- Stalber :
+```
+auto eth0
+iface eth0 inet static
+	address 192.239.1.3
+	netmask 255.255.255.0
+	gateway 192.239.1.1
+```
+
+- Severny : 
+```
+auto eth0
+iface eth0 inet static
+	address 192.239.1.4
+	netmask 255.255.255.0
+	gateway 192.239.1.1
+```
+
+- Pochinki : 
+```
+auto eth0
+iface eth0 inet static
+	address 192.239.3.2
+	netmask 255.255.255.0
+	gateway 192.239.3.1
+```
+
+- Apartments :
+``` 
+auto eth0
+iface eth0 inet static
+	address 192.239.2.5
+	netmask 255.255.255.0
+	gateway 192.239.2.1
+```
+
+- Mylta : 
+```
+auto eth0
+iface eth0 inet static
+	address 192.239.2.4
+	netmask 255.255.255.0
+	gateway 192.239.2.1
+```
+
+- Georgopol :
+```
+auto eth0
+iface eth0 inet static
+	address 192.239.2.3
+	netmask 255.255.255.0
+	gateway 192.239.2.1
+```
+
+- Ruins :
+``` 
+auto eth0
+iface eth0 inet static
+	address 192.239.2.2
+	netmask 255.255.255.0
+	gateway 192.239.2.1
+```
+
 - **Notes of Config**
   ```
-  Pandudewanata	: 192.173.1.1 (Switch 1)
-  Yudhistira	: 192.173.1.2
-  Nakula	        : 192.173.1.3
-  Pandudewanata	: 192.173.2.1 (Switch 2)
-  Werkudara	: 192.173.2.2
-  Sadewa	        : 192.173.2.3
-  Pandudewanata	: 192.173.3.1 (Switch 3)
-  Prabukusuma	: 192.173.3.2
-  Abimanyu	: 192.173.3.3
-  Wisanggeni	: 192.173.3.4
-  Arjuna	        : 192.173.3.5
+  Lipovka : 192.239.1.2
+  Stalber : 192.239.1.3
+  Severny : 192.239.1.4
+  Pochinki : 192.239.3.2
+  Apartments : 192.239.2.5
+  Mylta : 192.239.2.4
+  Georgopol : 192.239.2.3
+  Ruins : 192.239.2.2
   ```
 
-### Sebelum memulai --belom
+### Sebelum memulai 
 setiap node, kita inisiasi pada `.bashrc` menggunakan `nano`
 
-- **Pandudewanata**
+- **Erangel**
   ```
   iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.173.0.0/16
   echo 'nameserver 192.168.122.1' > /etc/resolv.conf
@@ -192,8 +199,8 @@ setiap node, kita inisiasi pada `.bashrc` menggunakan `nano`
 - **Client**
   ```
   echo -e '
-  nameserver 192.173.1.2 # IP Yudhistira
-  nameserver 192.173.2.2 # IP Werkudara
+  nameserver 192.239.3.2 # IP Pochinki
+  nameserver 192.239.2.3 # IP Geogopol
   nameserver 192.168.122.1
   ' > /etc/resolv.conf
   apt-get update
@@ -662,6 +669,124 @@ log     IN      A       192.239.1.4
 www.log IN      CNAME   siren.redzone.it12.com.
 @       IN      AAAA    ::1
 ```
+
+## Soal 11
+Setelah pertempuran mereda, warga Erangel dapat kembali mengakses jaringan luar, tetapi hanya warga Pochinki saja yang dapat mengakses jaringan luar secara langsung. Buatlah konfigurasi agar warga Erangel yang berada diluar Pochinki dapat mengakses jaringan luar melalui DNS Server Pochinki
+
+**Pochinki**
+- Uncomment bagian berikut dan ganti dengan IP nameserver Erangel
+```
+forwarders {
+    192.168.122.1;
+};
+```
+- Uncomment
+```
+// dnssec-validation auto;
+```
+- Tambahkan
+```
+allow-query{any;};
+```
+### Script
+
+- Restart ``service bind9 restart``
+- Ubahlah nameserver pada node lain ke ``IP Pochinki`` lalu ping google.com
+![image]()
+
+### Result
+![image]()
+
+## Soal 12
+Karena pusat ingin sebuah website yang ingin digunakan untuk memantau kondisi markas lainnya maka deploy lah webiste ini (cek resource yg lb) pada severny menggunakan apache
+
+### Script
+```
+
+echo -e "nameserver 10.78.1.2\nnameserver 10.78.1.3" > /etc/resolv.conf
+
+apt-get update
+
+apt-get install wget -y
+apt-get install apache2 -y
+apt-get install unzip -y
+apt-get install libapache2-mod-php7.0 -y
+
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=$wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=$
+mkdir /var/www
+mkdir /var/www/html
+
+unzip dir-listing.zip -d dir-listing
+unzip lb.zip -d lb
+
+cp /root/lb/worker/index.php /var/www/html/index.php
+
+service apache2 restart
+```
+- Menyambungkan Node severny dengan DNS kemudian melakukan instalasi apache2, dan modul lainnya
+- Download resource
+- copy resource ke /var/www/html/index.php
+- Restart ``service bind9 restart``
+
+#### Melakukan konfigurasi 
+```lynx http://10.78.3.2/index.php```
+### Result
+![image]()
+
+## Soal 13
+Tapi pusat merasa tidak puas dengan performanya karena traffic yag tinggi maka pusat meminta kita memasang load balancer pada web nya, dengan Severny, Stalber, Lipovka sebagai worker dan Mylta sebagai Load Balancer menggunakan apache sebagai web server nya dan load balancernya
+
+### Script 
+- Konfigurasi Mylta, seperti script dibawah ini
+```
+echo -e "nameserver 192.239.3.2\nameserver 192.239.2.3" > /etc/resolv.conf
+
+apt-get update
+
+apt-get install apache2 -y
+apt-get install libapache2-mod-php7.0 -y
+a2enmod proxy
+a2enmod proxy_http
+a2enmod proxy_balancer
+a2enmod lbmethod_byrequests
+
+rm /var/www/html/index.html
+
+echo -e "<VirtualHost *:80>
+        <Proxy balancer://mycluster>
+                BalancerMember http://192.239.1.3
+                BalancerMember http://192.239.1.4
+        </Proxy>
+        ProxyPreserveHost On
+        ProxyPass / balancer://mycluster/
+        ProxyPassReverse / balancer://mycluster/
+
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet" > /etc/apache2/sites-available/000-default.conf
+service apache2 restart
+```
+- Copy konfigurasi ke /etc/apache/sites-available/000-default.conf
+
+**Testing Load Balancer**
+- menggunakan lynx dan setiap ip load balancer di restart akan menampilkan isi index.php dari worker secara bergantian
+
+## Soal 14
+Mereka juga belum merasa puas jadi pusat meminta agar web servernya dan load balancer nya diubah menjadi nginx
+
+## Soal 15
+Markas pusat meminta laporan hasil benchmark dengan menggunakan apache benchmark dari load balancer dengan 2 web server yang berbeda tersebut dan meminta secara detail dengan ketentuan:
+- Nama Algoritma Load Balancer
+- Report hasil testing apache benchmark 
+- Grafik request per second untuk masing masing algoritma. 
+- Analisis
+
 
 
 
