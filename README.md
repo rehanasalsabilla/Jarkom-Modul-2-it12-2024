@@ -73,7 +73,8 @@
 
 
 ## Topologi
-![image]()
+
+
 
 ## Config 
 
@@ -371,7 +372,9 @@ ping www.loot.it12.com -c 5
 Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Erangel
 
 ### Result
-![image]()
+![Screenshot 2024-05-04 025025](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/2c1d184b-9638-468f-be5a-bb0ed9747d5b)
+![Screenshot 2024-05-04 024911](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/17204ded-6104-44ea-93c9-7bf7b6a6e208)
+![Screenshot 2024-05-04 024846](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/136863633/31bc3225-8408-4ea5-9980-ce9b8d3face1)
 
 ## Soal 6
 Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain redzone.xxxx.com melalui alamat IP Severny (Notes : menggunakan pointer record)
