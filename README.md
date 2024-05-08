@@ -804,17 +804,200 @@ Markas pusat meminta laporan hasil benchmark dengan menggunakan apache benchmark
 Karena dirasa kurang aman karena masih memakai IP, markas ingin akses ke mylta memakai mylta.xxx.com dengan alias www.mylta.xxx.com (sesuai web server terbaik hasil analisis kalian)
 
 ### Script
+- Konfigurasi pada Pochinki. Tambahkan myla.it12.com pada `/etc/bind/named.conf.local`
+```
+zone "airdrop.it04.com" {
+    type master;
+    also-notify { 192.239.2.3; };
+    allow-transfer { 192.239.2.3; };
+    file "/etc/bind/zone/airdrop.it12.com";
+};
+
+zone "redzone.it12.com" {
+    type master;
+    also-notify { 192.239.2.3; };
+    allow-transfer { 192.239.2.3; };
+    file "/etc/bind/zone/redzone.it12.com";
+};
+
+zone "2.239.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/zone/2.239.192.in-addr.arpa";
+};
+
+zone "loot.it12.com" {
+    type master;
+    file "/etc/bind/delegasizone/loot.it12.com";
+};
+
+zone "mylta.it12.com" {
+    type master;
+    file "/etc/bind/zone/mylta.it12.com";
+};
+```
+Lalu, kita perlu merubah IP menjadi nameserver dan aliasnya pada `/etc/bind/jarkom/mylta.it04.com` 
+```
+
+$TTL    604800
+@       IN      SOA     mylta.it12.com. root.mylta.it12.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      mylta.it12.com.
+@       IN      A       192.239.2.4
+@       IN      AAAA    ::1
+www     IN      CNAME   mylta.it12.com.
+
+```
+Setelah itu, pindah ke Mylta dan melakukan command `service apache reload` dan `service apache2 restart` lalu kita sudah dapat mengakses Mylta menggunakan nameservernya pada client seperti dibawah
+```
+
+root@Ruins:~# lynx http://mylta.it12.com/index.php
+
+
+Exiting via interrupt: 2
+
+root@Ruins:~# lynx http://www.mylta.it12.com/index.php
+
+
+Exiting via interrupt: 2
+```
 
 ## Soal 17
 Agar aman, buatlah konfigurasi agar mylta.xxx.com hanya dapat diakses melalui port 14000 dan 14400.
 
 ### Script
+- Konfigurasikan file .conf pada `/etc/apache2/sites-available` yaitu file `default-14000.conf` dan `default-14400` seperti berikut:
+```
+<VirtualHost *:14400>
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request's Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
+
+        ServerName mylta.it12.com
+        ServerAlias www.mylta.it12.com
+
+    <Proxy balancer://itbalancer>
+        BalancerMember http://192.239.1.2:14400
+        BalancerMember http://192.239.1.3:14400
+        BalancerMember http://192.239.1.4:14400
+        ProxySet lbmethod=byrequests
+    </Proxy>
+
+    ProxyPreserveHost On
+    ProxyPass / balancer://itbalancer/
+    ProxyPassReverse / balancer://itbalancer/
+
+
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        #LogLevel info ssl:warn
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with "a2disconf".
+        # Include conf-available/serve-cgi-bin.conf
+</VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+
+ServerName 127.0.1.1.
+```
+Setelah itu kita tinggal run command `service apache2 restart` dan run command `service apache2 reload` agar dapat berjalan dengan konfigurasi apache2 terbaru
 
 ## Soal 18
 Apa bila ada yang mencoba mengakses IP mylta akan secara otomatis dialihkan ke www.mylta.xxx.com
 
 ### Script
+- Konfigurasi reverse DNS pada zone Mylta pada POCHINKI dengan mengkonfigurasi `/etc/bind/named.conf.local`
+```
+zone "4.2.239.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/zone/4.2.239.192.in-addr.arpa";
+};
+```
+Lalu kita perlu mengonfigurasi file `"/etc/bind/zone/4.2.239.192.in-addr.arpa";` agar lebih mudah kita tinggal copy dengan konfigurasi mylta sebelumnya dengan command `cp /etc/bind/zone/mylta.it04.com /etc/bind/zone/5.2.168.192.in-addr.arpa`
+Dengan konfigurasi `/etc/bind/zone/4.2.239.192.in-addr.arpa` seperti berikut:
+```
+$TTL    604800
+@       IN      SOA     mylta.it12.com. root.mylta.it12.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      mylta.it12.com.
+@       IN      A       192.239.2.4
+@       IN      AAAA    ::1
+www     IN      CNAME   mylta.it12.com.
+```
+Lalu kita atur juga bagian konfigurasi apache2 load balancing pada MYLTA pada file `000-default.conf`
+dan saat kita run `lynx http://192.239.2.4:14400/index.php` maka hasilnya seperti berikut:
+```
+<VirtualHost *:80>
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request's Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
 
+        ServerName 192.239.2.4
+        ServerAlias www.mylta.it04.com
+
+    <Proxy balancer://itbalancer>
+        BalancerMember http://192.239.1.2:8080
+        BalancerMember http://192.239.1.3:8080
+        BalancerMember http://192.239.1.4:8080
+        ProxySet lbmethod=byrequests
+    </Proxy>
+
+    ProxyPreserveHost On
+    ProxyPass / balancer://itbalancer/
+    ProxyPassReverse / balancer://itbalancer/
+
+
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^192.239.2.4
+    RewriteRule ^(.*)$ http://www.mylta.i12.com/$1 [R=301,L]
+
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        #LogLevel info ssl:warn
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with "a2disconf".
+        # Include conf-available/serve-cgi-bin.conf
+</VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+
+ServerName 127.0.1.1.
+```
 ## Soal 19 
 Karena probset sudah kehabisan ide masuk ke salah satu worker buatkan akses direktori listing yang mengarah ke resource worker2
 
