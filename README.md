@@ -62,3 +62,90 @@ host -t PTR 192.239.1.4
 Akhir-akhir ini seringkali terjadi serangan siber ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Georgopol untuk semua domain yang sudah dibuat sebelumnya
 
 ### Pochinki
+- Jalankan `nano /etc/bind/named.conf.local`
+- Edit konfigurasi dimana IP Georgopol `192.239.2.3` akan dijadikan DNS Slave
+```
+zone "airdrop.it12.com" {
+    type master;
+    also-notify { 192.239.2.3; };
+    allow-transfer { 192.239.2.3; };
+    file "/etc/bind/airdrop/airdrop.it12.com";
+};
+
+zone "redzone.it12.com" {
+    type master;
+    also-notify { 192.239.2.3; };
+    allow-transfer { 192.239.2.3; };
+    file "/etc/bind/redzone/redzone.it12.com";
+};
+
+zone "loot.it12.com" {
+    type master;
+    also-notify { 192.239.2.3; };
+    allow-transfer { 192.239.2.3; };
+    file "/etc/bind/loot/loot.it12.com";
+};
+```
+- Lalu, start bind9 dengan `service bind9 start`
+
+### Georgopol
+- Pada Goergopol run kode bash dibawah
+```
+#!/bin/bash
+
+# Check for root privileges
+if [ "$(id -u)" -ne 0 ]; then
+    echo "Please run this script as root"
+    exit 1
+fi
+
+config() {
+    # Check if BIND9 is installed
+    if ! dpkg -l | grep -q bind9; then
+        apt-get update 
+        apt-get install -y bind9 nano 
+    fi
+
+    # Create directory for zone files if it doesn't exist
+    mkdir -p /etc/bind/jarkom/
+
+    # Create a zone configuration
+    cat <<EOL > /etc/bind/named.conf.local
+zone "airdrop.it12.com" {
+    type slave;
+    masters { 192.239.3.2; }; 
+    file "/var/lib/bind/jarkom/airdrop.it12.com";
+};
+
+zone "redzone.it12.com" {
+    type slave;
+    masters { 192.239.3.2; };
+    file "/var/lib/bind/jarkom/redzone.it12.com";
+};
+
+zone "loot.it12.com" {
+    type slave;
+    masters { 192.239.3.2; };
+    file "/var/lib/bind/jarkom/loot.it12.com";
+};
+
+EOL
+
+    # Restart BIND to apply changes
+    service bind9 restart
+}
+
+# Call the function to execute the configuration
+config
+
+```
+- Matikan bind9 pada Pochinki dengan command `service bind9 stop`
+- Buka file resolve.conf pada tiap-tiap client dengan command `nano /etc/resolve.conf` lalu, tambahkan IP Georgopol
+```
+nameserver 192.239.3.2
+nameserver 192.239.2.3
+```
+- Coba cek dengan ping website yang telah dibuat
+![image](https://github.com/rehanasalsabilla/Jarkom-Modul-2-it12-2024/assets/143682058/18b677cc-eb98-449c-a2ee-d7c95e382352)
+
+Dapat dilihat bahwa website masih error ketika di ping untuk case saya.
